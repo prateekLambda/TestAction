@@ -40,37 +40,28 @@ on:
         required: true
         type: string
   workflow_call:
-    secrets:
-      download_token:
-        required: true
-      TR_USER:
-        required: true
-      TR_PASSWORD:
-        required: true
 
 name: QA Workflow Release
+env:
+    country: ${{github.event.inputs.country}}
+    brand: ${{github.event.inputs.brand}}
+    environment : ${{github.event.inputs.environment}}   
 jobs:
   executeE2eTests:
     runs-on: ubuntu-latest
     name: Execute E2E Tests
+ 
+    
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: 'tech-belcorp/ecommerce-nextgen-platform-automation-framework'
-          ref: 'release'
-      - uses: actions/github-script@v6
-        env:
-          country: '${{inputs.country}}'
-          brand: '${{inputs.brand}}'
-          environment : '${{inputs.environment}}'
+
       - name: Starting CLI testing
-        shell: bash
+        shell: bash   
         run: |
-            const script = require('./.github/workflows/url.js')
-            console.log("VTEX BASE URL:")
-            console.log(script({core, context}))
-              curl https://downloads.lambdatest.com/hyperexecute/windows/hyperexecute.exe -o hyperexecute
+            git clone https://github.com/prateekLambda/TestingGhAC.git
+            cd TestingGhAC
+              curl https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
+              chmod u+x hyperexecute
               export LT_USERNAME=${{ github.event.inputs.username }}
               export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
-              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config yaml/win/cucumber_hyperexecute_autosplit_sample.yaml
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config .hyperexecute.yaml
    
