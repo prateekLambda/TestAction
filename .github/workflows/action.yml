@@ -74,9 +74,9 @@ jobs:
               echo $brand_two
               echo $environment
               node testMX.js
-             # curl https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
-             # chmod u+x hyperexecute
-             # export LT_USERNAME=${{ github.event.inputs.username }}
-             # export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
-             # ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config .hyperexecute.yaml
+              curl https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
+              chmod u+x hyperexecute
+              export LT_USERNAME=${{ github.event.inputs.username }}
+              export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
+              ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config .hyperexecute.yaml
    
