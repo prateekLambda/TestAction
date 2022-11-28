@@ -68,6 +68,7 @@ jobs:
         run: |
             git clone https://github.com/prateekLambda/TestingGhAC.git
             cd TestingGhAC
+              npm install
               echo $country
               echo $brand_one
               echo $brand_two
