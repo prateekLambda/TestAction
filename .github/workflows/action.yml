@@ -68,10 +68,10 @@ jobs:
         run: |
             git clone https://github.com/prateekLambda/TestingGhAC.git
             cd TestingGhAC
-              echo country
-              echo brand_one
-              echo brand_two
-              echo environment
+              echo $country
+              echo $brand_one
+              echo $brand_two
+              echo $environment
               curl https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
               chmod u+x hyperexecute
               export LT_USERNAME=${{ github.event.inputs.username }}
