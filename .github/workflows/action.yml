@@ -67,7 +67,7 @@ jobs:
         shell: bash   
         run: |
             git clone https://github.com/prateekLambda/TestAction.git
-            cd TestingGhAC
+            cd TestAction
               npm install
               echo $country
               echo $brand_one
