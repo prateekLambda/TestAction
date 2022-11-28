@@ -33,6 +33,8 @@ function getConfig() {
     let commands = '';
     for (var country of COUNTRIES) {
       for (var brand of BRANDS) {
+         if(brand=='not selected')
+          continue
         for (var environment of ENVIRONMENTS){
           for (i = 0; i < files.length; i++) {
             commands +=
