@@ -29,12 +29,20 @@ on:
         - Lbel
       brand_two:
         description: 'Select Brand two'
-        required: true
+        required: false
         type: choice
         options:
         - Esika
         - Cyzone
         - Lbel
+      brand_three:
+        description: 'Select Brand three'
+        required: false
+        type: choice
+        options:
+        - Esika
+        - Cyzone
+        - Lbel  
       environment:
         description: 'Select Environment'
         required: true
@@ -54,6 +62,7 @@ env:
     country: ${{github.event.inputs.country}}
     brand_one: ${{github.event.inputs.brand_one}}
     brand_two: ${{github.event.inputs.brand_two}}
+    brand_three: ${{github.event.inputs.brand_three}}
     environment : ${{github.event.inputs.environment}}   
 jobs:
   executeE2eTests:
@@ -69,10 +78,6 @@ jobs:
             git clone https://github.com/prateekLambda/TestAction.git
             cd TestAction
               npm install
-              echo $country
-              echo $brand_one
-              echo $brand_two
-              echo $environment
               node testMX.js
               curl https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
               chmod u+x hyperexecute
