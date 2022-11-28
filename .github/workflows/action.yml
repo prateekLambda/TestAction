@@ -28,6 +28,7 @@ on:
         - Esika
         - Cyzone
         - Lbel
+        - not selected
       brand_two:
         default: 'null'
         description: 'Select Brand two'
@@ -37,6 +38,7 @@ on:
         - Esika
         - Cyzone
         - Lbel
+        - not selected
       brand_three:
         default: 'null'
         description: 'Select Brand three'
@@ -46,6 +48,7 @@ on:
         - Esika
         - Cyzone
         - Lbel  
+        - not selected
       environment:
         description: 'Select Environment'
         required: true
