@@ -20,7 +20,7 @@ on:
         - EC
         - PA
       brand_one:
-        description: 'Select Brand'
+        description: 'Select Brand one'
         required: true
         type: choice
         options:
@@ -28,7 +28,7 @@ on:
         - Cyzone
         - Lbel
       brand_two:
-        description: 'Select Brand'
+        description: 'Select Brand two'
         required: true
         type: choice
         options:
