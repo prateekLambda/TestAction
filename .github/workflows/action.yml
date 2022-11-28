@@ -19,7 +19,15 @@ on:
         - PE
         - EC
         - PA
-      brand:
+      brand_one:
+        description: 'Select Brand'
+        required: true
+        type: choice
+        options:
+        - Esika
+        - Cyzone
+        - Lbel
+      brand_two:
         description: 'Select Brand'
         required: true
         type: choice
@@ -44,7 +52,8 @@ on:
 name: QA Workflow Release
 env:
     country: ${{github.event.inputs.country}}
-    brand: ${{github.event.inputs.brand}}
+    brand_one: ${{github.event.inputs.brand_one}}
+    brand_two: ${{github.event.inputs.brand_two}}
     environment : ${{github.event.inputs.environment}}   
 jobs:
   executeE2eTests:
