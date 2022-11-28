@@ -25,8 +25,14 @@ base_urls = {
 };
 
 var COUNTRIES = [process.env.country];
-var BRANDS = [process.env.brand, 'Cyzone'];
+var BRANDS = [process.env.brand_one, process.env.brand_two];
 var ENVIRONMENTS = [process.env.environment]
+console.log(COUNTRIES,'Lllllllllsdmkasndsa', process.env.country);
+console.log(BRANDS,'BbbbbbbbBbBbBbsdmkasndsa', process.env.brand_one, process.env.brand_two);
+console.log(ENVIRONMENTS,'Lllllllllsdmkasndsa', process.env.environment);
+
+
+
 
 function getConfig() {
   glob('cypress/integration/**/*.feature', {}, function (er, files) {
