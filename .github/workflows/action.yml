@@ -1,3 +1,4 @@
+name: QA Workflow Release
 on:
   workflow_dispatch:
     inputs:
@@ -47,7 +48,7 @@ on:
         options:
         - Esika
         - Cyzone
-        - Lbel  
+        - Lbel
         - not selected
       environment:
         description: 'Select Environment'
@@ -62,32 +63,35 @@ on:
         required: true
         type: string
   workflow_call:
-
-name: QA Workflow Release
 env:
     country: ${{github.event.inputs.country}}
     brand_one: ${{github.event.inputs.brand_one}}
     brand_two: ${{github.event.inputs.brand_two}}
     brand_three: ${{github.event.inputs.brand_three}}
-    environment : ${{github.event.inputs.environment}}   
+    environment: ${{github.event.inputs.environment}}
+    NODE_VERSION: 16
 jobs:
   executeE2eTests:
-    runs-on: ubuntu-latest
     name: Execute E2E Tests
- 
-    
+    runs-on: ubuntu-latest
     steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@main
+
+      - name: Setup Node ${{ env.NODE_VERSION }} Environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
       - name: Starting CLI testing
-        shell: bash   
+        shell: bash
         run: |
-            git clone https://github.com/prateekLambda/TestAction.git
-            cd TestAction
-              npm install
+              npm ci
               node testMX.js
               curl https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute -o hyperexecute
               chmod u+x hyperexecute
               export LT_USERNAME=${{ github.event.inputs.username }}
               export LT_ACCESS_KEY=${{ github.event.inputs.accessKey }}
               ./hyperexecute --user $LT_USERNAME --key $LT_ACCESS_KEY --config .hyperexecute.yaml
-   
+
